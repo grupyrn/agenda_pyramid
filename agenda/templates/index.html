@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{{ request.route_url('new_agenda') }}" class="btn btn-primary">Nova Agenda</a>
+<table class="table table-condensed">
+  <tr>
+    <th>Nome</th>
+    <th>Ação</th>
+  </tr>
+  {% for agenda in agendas %}
+  <tr>
+    <td>{{ agenda.nome }}</td>
+    <td>
+      <a href="{{ request.route_url('items', agenda_id=agenda.id) }}" class="btn">
+        Ver Itens
+      </a>
+      <a href="{{ request.route_url('edit_agenda', agenda_id=agenda.id) }}" class="btn btn-info">
+        Editar
+      </a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

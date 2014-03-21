@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Novo Item{% endblock %}
+
+{% block content %}
+<form action="{{ request.path }}" method="POST">
+  {{ form.csrf_token }}
+  {% for field in form %}
+  <div>
+    {{ field.label }}
+    {{ field }}
+  </div>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary">Salvar</button>
+  <a href="{{ request.route_url('home') }}" class="btn">
+    Voltar
+  </a>
+</form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Itens da Agenda {% endblock %}
+
+{% block content %}
+{% if items.first() %}
+<table class="table">
+  <tr>
+    <th>Titulo</th>
+    <th>Data</th>
+    <th>Ações</th>
+  </tr>
+  {% for item in items %}
+  <tr>
+    <td>{{ item.titulo }}</td>
+    <td>{{ item.data }}</td>
+    <td>
+      <a href="{{ request.route_url('edit_item', agenda_id=request.matchdict['agenda_id'], item_id=item.id) }}" class="btn btn-info">
+        Ver/Editar
+      </a>
+      <a href="{{ request.route_url('delete_item', agenda_id=request.matchdict['agenda_id'],item_id=item.id) }}" class="btn btn-danger">
+        Deletar
+      </a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<a href="{{ request.route_url('new_item', agenda_id=request.matchdict['agenda_id']) }}" class="btn btn-primary">
+  Novo Item
+</a>
+<a href="{{ request.route_url('home') }}" class="btn">Voltar</a>
+
+{% else %}
+<a href="{{ request.route_url('new_item', agenda_id=request.matchdict['agenda_id']) }}" class="btn btn-primary">
+  Novo Item
+</a>
+<a href="{{ request.route_url('home') }}" class="btn">Voltar</a>
+{% endif %}
+{% endblock %}
