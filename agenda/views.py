@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from pyramid.httpexceptions import HTTPFound
 from pyramid.response import Response
 from pyramid.view import view_config
@@ -47,6 +49,17 @@ def new_item(request):
         )
 
     return {'form': form}
+
+"""
+Está aceitando apagar agenda via get apenas por simplicidade
+isso não é uma boa pratica
+"""
+@view_config(route_name='delete_agenda')
+def delete_agenda(request):
+    agenda = Agenda.by_id(request.matchdict.get('agenda_id'))
+    request.db.delete(agenda)
+    home_url = request.route_url('home')
+    return HTTPFound(location=home_url)
 
 @view_config(route_name='delete_item', renderer='json')
 def delete_item(request):

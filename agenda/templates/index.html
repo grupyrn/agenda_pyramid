@@ -17,6 +17,9 @@
       <a href="{{ request.route_url('edit_agenda', agenda_id=agenda.id) }}" class="btn btn-info">
         Editar
       </a>
+      <a href="{{ request.route_url('delete_agenda', agenda_id=agenda.id) }}" class="btn btn-info">
+        Apagar
+      </a>
     </td>
   </tr>
   {% endfor %}
