@@ -27,7 +27,7 @@ class BaseModify(object):
     Fique a vontade para alterar essa classe ao seu gosto
     """
     @declared_attr
-    def id(cls):
+    def pk(cls):
         return Column(Integer, primary_key=True)
 
     @declared_attr
@@ -39,8 +39,8 @@ class BaseModify(object):
         return DBSession.query(cls).all()
 
     @classmethod
-    def by_id(cls, id):
-        return DBSession.query(cls).filter(cls.id == id).first()
+    def by_id(cls, pk):
+        return DBSession.query(cls).filter(cls.pk == pk).first()
 
     @classmethod
     def filter_by(cls, **kw):
@@ -58,7 +58,7 @@ class ItemAgenda(Base):
     item = ItemAgenda.by_id(1)
     item.agenda -> Acessa todos os atributos de Agenda()
     """
-    agenda_id = Column(Integer, ForeignKey(Agenda.id), nullable=False)
+    agenda_id = Column(Integer, ForeignKey(Agenda.pk), nullable=False)
     titulo = Column(Unicode(100), nullable=False)
     descricao = Column(UnicodeText)
     data = Column(Date)
