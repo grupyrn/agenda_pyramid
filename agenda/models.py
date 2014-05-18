@@ -36,21 +36,15 @@ class BaseModify(object):
 
     @classmethod
     def all(cls):
-        request = get_current_request()
-        db = request.db
-        return db.query(cls).all()
+        return DBSession.query(cls).all()
 
     @classmethod
     def by_id(cls, id):
-        request = get_current_request()
-        db = request.db
-        return db.query(cls).filter(cls.id == id).first()
+        return DBSession.query(cls).filter(cls.id == id).first()
 
     @classmethod
     def filter_by(cls, **kw):
-        request = get_current_request()
-        db = request.db
-        return db.query(cls).filter_by(**kw)
+        return DBSession.query(cls).filter_by(**kw)
 
 Base = declarative_base(cls=BaseModify)
 
