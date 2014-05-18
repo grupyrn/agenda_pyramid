@@ -11,10 +11,10 @@
   <tr>
     <td>{{ agenda.nome }}</td>
     <td>
-      <a href="{{ request.route_url('items', agenda_id=agenda.id) }}" class="btn">
+      <a href="{{ request.route_url('items', agenda_id=agenda.pk) }}" class="btn">
         Ver Itens
       </a>
-      <a href="{{ request.route_url('edit_agenda', agenda_id=agenda.id) }}" class="btn btn-info">
+      <a href="{{ request.route_url('edit_agenda', agenda_id=agenda.pk) }}" class="btn btn-info">
         Editar
       </a>
     </td>

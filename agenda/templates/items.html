@@ -15,10 +15,10 @@
     <td>{{ item.titulo }}</td>
     <td>{{ item.data }}</td>
     <td>
-      <a href="{{ request.route_url('edit_item', agenda_id=request.matchdict['agenda_id'], item_id=item.id) }}" class="btn btn-info">
+      <a href="{{ request.route_url('edit_item', agenda_id=request.matchdict['agenda_id'], item_id=item.pk) }}" class="btn btn-info">
         Ver/Editar
       </a>
-      <a href="{{ request.route_url('delete_item', agenda_id=request.matchdict['agenda_id'],item_id=item.id) }}" class="btn btn-danger">
+      <a href="{{ request.route_url('delete_item', agenda_id=request.matchdict['agenda_id'],item_id=item.pk) }}" class="btn btn-danger">
         Deletar
       </a>
     </td>
